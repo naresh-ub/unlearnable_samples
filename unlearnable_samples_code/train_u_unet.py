@@ -196,17 +196,8 @@ def main():
         if ema: ema.copy_to(final_unet.parameters())
         # Save unlearnable UNet separately
         torch.save(final_unet.state_dict(), os.path.join(args.output_dir, "unlearnable_unet.pth"))
-        # Optionally package into diffusers pipeline
-        pipe = StableDiffusionPipeline(
-            vae=vae,
-            unet=final_unet,
-            scheduler=scheduler,
-            tokenizer=ti_tokenizer,
-            safety_checker=None,
-            feature_extractor=None
-        ).to(device)
-        pipe.save_pretrained(args.output_dir)
-        logger.info("Saved pipeline and unlearnable UNet weights to %s", args.output_dir)
+        
+        logger.info("Saved unlearnable UNet weights to %s", args.output_dir)
 
 if __name__ == "__main__":
     main()
