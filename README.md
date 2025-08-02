@@ -19,7 +19,7 @@ Our codebase directly builds on top of [Diffusers](https://github.com/huggingfac
 
 ### PyTorch
 
-With `pip` (official package):
+With `pip`:
 
 ```bash
 pip install --upgrade diffusers[torch]
